@@ -1,4 +1,4 @@
-# What Type of Problem?
+# What Type of Problem
 
 For this little project we have determinded that our output is discret and a classification type algorithm is best to be used here.
 
