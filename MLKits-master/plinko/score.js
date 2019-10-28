@@ -13,26 +13,18 @@ function runAnalysis() {
   // Write code here to analyze stuff
 
   let testSetSize = 100;
-  const [testSet, trainingSet] = splitDataset(outputs,testSetSize);
-  
-  /*let numCorrect = 0;
-  for(let i=0; i < testSet.length; i++){
-    const bucket = knn(trainingSet,testSet[i][0]);
-    //console.log(bucket,testSet[i][3]);
-    if(bucket === testSet[i][3]){
-      numCorrect++;
-    }
-  }
-  console.log('Accuracy: ', numCorrect/testSetSize);
-  */
-  _.range(1,20).forEach(k => {
+  const k = 10;
+ 
+  _.range(0,3).forEach(feature => {
+  const data = _.map(outputs, row =>[row[feature],_.last(row)]);
+  const [testSet, trainingSet] = splitDataset(minMax(data, 1),testSetSize);
   const accuracy = _.chain(testSet)
-    .filter(testPoint => knn(trainingSet, _.initial(testPoint), k) === testPoint[3])
+    .filter(testPoint => knn(trainingSet, _.initial(testPoint), k) === _.last(testPoint))
     .size()
     .divide(testSetSize)
     .value()
 
-  console.log('Given K: ', k ,'Accuracy is', accuracy);
+  console.log('Given feature: ', feature ,'Accuracy is', accuracy);
   });
 }
 
