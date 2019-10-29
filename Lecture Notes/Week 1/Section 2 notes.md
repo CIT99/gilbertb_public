@@ -69,3 +69,11 @@ function minMax(data, featureCount){
 it took our dataset and the number of features as inputs then returned a normalized dataset ready to be processed further.
 
 After adding the new features we saw that our prediction was still pretty low. From our test we could actually see that our accuracy went down from adding all the features to our algorithm. The ball bounciness was affecting the bucket that the ball fell into but it add a lot of randomness causing our prediction to drop. Once we compared the effects of using each of the lables by themselves to predict the output we decided to remove ball bounciness as it only decreased accuracy.
+
+## Main take away
+
+1. Features vs Labels
+2. Test dataset vs Training dataset
+3. Feature Normalization
+4. Feature Selection
+5. Common data structures
