@@ -23,7 +23,9 @@ I tried to implement the knn algorithm on my machine but I'm having problems wit
 In the video lectures what we were supposed to do was similar to what we did in the plinko app. First we were supposed to load our CSV file, separate the data into a testSet and trainingSet, and instead of normalizing the data we standardized it.
 
 The KNN function looked like this:
+
 ```javascript
+
 function knn(features, labels, predictionPoint, k){
     const {mean, variance} = tf.moments(features, 0);
     const scaledPrediction = predictionPoint.sub(mean).div(variance.pow(0.5));

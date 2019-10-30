@@ -16,7 +16,7 @@ function runAnalysis() {
   const k = 10;
  
   _.range(0,3).forEach(feature => {
-  const data = _.map(outputs, row =>[row[feature],_.last(row)]);
+  const data = _.map(outputs, row =>[row[feature], _.last(row)]);
   const [testSet, trainingSet] = splitDataset(minMax(data, 1),testSetSize);
   const accuracy = _.chain(testSet)
     .filter(testPoint => knn(trainingSet, _.initial(testPoint), k) === _.last(testPoint))
@@ -36,7 +36,7 @@ function knn (data, testPoint, k){
     .sortBy(row => row[0])
     .slice(0,k)
     .countBy(row => row[1])
-    .toPairs()
+    .toPairs() // create 2d array here
     .sortBy(row => row[1])
     .last()
     .first()
