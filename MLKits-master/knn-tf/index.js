@@ -17,9 +17,11 @@ function knn(features, labels, predictionPoint, k){
             .expandDims(1)
             .concat(labels,1)
             .unstack()
-            .sort((a,b)=> a.get(0)> b.get(0)? 1 : -1)
+            //.sort((a,b)=> a.get(0)> b.get(0)? 1 : -1)
+            .sort((tensorA, tensorB) => tensorA.arraySync()[0] > tensorB.arraySync()[0] ? 1 : -1)
             .slice(0,k)
-            .reduce((acc,pair)=> acc + pair.get(1),0)/k
+            //.reduce((acc,pair)=> acc + pair.get(1),0)/k
+            .reduce((acc, pair, index) => acc + pair.arraySync()[1], 0) / k
     );
     
 }
@@ -27,7 +29,7 @@ function knn(features, labels, predictionPoint, k){
 let {features, labels, testFeatures, testLabels} = loadCSV('kc_house_data.csv',{
     shuffle: true,
     splitTest: 10,
-    dataColumns: ['lat', 'long','sqft_lot'],
+    dataColumns: ['lat', 'long', 'sqft_lot', 'sqft_living'],
     labelColumns: ['price'],
 
 });
