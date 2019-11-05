@@ -1,6 +1,7 @@
 require('@tensorflow/tfjs-node');
 const tf = require('@tensorflow/tfjs');
 const loadCSV = require('./load-csv');
+const LinerRegression = require('./linear-regression');
 
 let {features, labels, testFeatures, testLabels} = loadCSV('./cars.csv',{
    shuffle: true,
@@ -9,4 +10,12 @@ let {features, labels, testFeatures, testLabels} = loadCSV('./cars.csv',{
    labelColumns: ['mpg']
 });
 
-console.log(features,labels);
+const regression = new LinerRegression(features, labels,{
+   
+   learningRate : 0.01,
+   iterations: 1
+});
+
+regression.train();
+
+console.log('Updated M is:', regression.m, 'Updated B is:', regression.b);
