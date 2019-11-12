@@ -1,0 +1,1 @@
+# Increasing Performance with Vectorized Solutions
