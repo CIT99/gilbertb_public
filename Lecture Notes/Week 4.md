@@ -25,3 +25,8 @@ In section 8 we briefly covered the topic of plotting data in JavaScript. We use
 ## Batch and Stochastic Gradient Decent
 
 To further improve the performance of our model we implemented batch processing of our data. With batch processing we would update our M and B MSE values after each batch instead of after processing the whole dataset. This lead to our model reaching its optimal values. Once we implemented processing all we had to do to implement Stochastic Gradient Decent was was change our batch size to one which would change our weights for every element of our dataset.
+
+
+## Video Notes 
+
+Neural networks are a type of machine learning algorithm that is based on the human brain structure.
